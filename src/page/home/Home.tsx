@@ -1,18 +1,19 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import { Features } from "@/src/interfaces/features";
-import React from "react";
+import React, { useEffect } from "react";
 
-import {
-  ZapIcon,
-  GlobeIcon,
-  BrainCogIcon,
-  MonitorSmartphoneIcon,
-  EyeIcon,
-  ServerCogIcon,
-} from "lucide-react";
 import { Button } from "@/src/components/ui/button";
-import Link from "next/link";
 import { ROUTES } from "@/src/constants/common/routes";
+import {
+  BrainCogIcon,
+  EyeIcon,
+  GlobeIcon,
+  MonitorSmartphoneIcon,
+  ServerCogIcon,
+  ZapIcon,
+} from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 import AppScreenShot1 from "../../../public/app screen shot 1.jpg";
 import AppScreenShot2 from "../../../public/app screen shot 2.jpg";
@@ -119,7 +120,7 @@ const HomePage = () => {
                 </div>
                 <div className="bg-white rounded-t-lg shadow-md overflow-hidden">
                   <Image
-                    src={AppScreenShot1}
+                    src={AppScreenShot2}
                     alt="Image 4"
                     className="w-full h-auto object-cover"
                   />
@@ -135,10 +136,12 @@ const HomePage = () => {
               {features.map((feature, index) => (
                 <div className="relative pl-9" key={index}>
                   <dt className="inline font-semibold text-gray-600">
-                    <feature.icon
-                      aria-hidden="true"
-                      className="absolute left-1 top-1 w-5 text-indigo-600"
-                    />
+                    {feature.icon && (
+                      <feature.icon
+                        aria-hidden="true"
+                        className="absolute left-1 top-1 w-5 text-indigo-600"
+                      />
+                    )}
                   </dt>
                   <dd className="text-base md:text-lg lg:text-xl font-bold text-gray-600">
                     {feature.name}
